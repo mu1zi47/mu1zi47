@@ -1,9 +1,28 @@
+'use client';
 import Image from "next/image";
 import Nav from "@/components/nav";
 import Link from "next/link";
 import styles from "./home.module.css";
+import useApi from "@/utils/api";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
+  const api = useApi();
+
+  const fetchProjects = async () => {
+    const response = await api.get('projects/');
+    return response.data;
+  };
+
+  const {
+    data: projects,
+    isLoading
+  } = useQuery({
+    queryKey: ['projects'],
+    queryFn: fetchProjects,
+    enabled: true,
+  });
+
   return (
     <section className={styles.mainContainer}>
       <Nav />
@@ -30,40 +49,35 @@ export default function Home() {
             <Link
               href={"https://ru.wikipedia.org/wiki/HTML"}
               target="_blank"
-              className={styles.boxOneSkills}
-            >
+              className={styles.boxOneSkills}>
               <p>HTML</p>
               <h6>advanced</h6>
             </Link>
             <Link
               href={"https://ru.wikipedia.org/wiki/CSS"}
               target="_blank"
-              className={styles.boxOneSkills}
-            >
+              className={styles.boxOneSkills}>
               <p>CSS</p>
               <h6>advanced</h6>
             </Link>
             <Link
               href={"https://ru.wikipedia.org/wiki/JavaScript"}
               target="_blank"
-              className={styles.boxOneSkills}
-            >
+              className={styles.boxOneSkills}>
               <p>JavaScript</p>
               <h6>intermediate</h6>
             </Link>
             <Link
               href={"https://en.wikipedia.org/wiki/Git"}
               target="_blank"
-              className={styles.boxOneSkills}
-            >
+              className={styles.boxOneSkills}>
               <p>Git</p>
               <h6>basic</h6>
             </Link>
             <Link
               href={"https://react.dev/"}
               target="_blank"
-              className={styles.boxOneSkills}
-            >
+              className={styles.boxOneSkills}>
               <p>React</p>
               <h6>intermediate</h6>
             </Link>
@@ -78,68 +92,27 @@ export default function Home() {
         </div>
         <div className={styles.projectsSection}>
           <h1>Projects</h1>
-          <Link href={'https://bimretail.uz'} className={styles.oneProject} target="_blank">
+          {projects && projects.length > 0 ? projects.map((item) => (
+          <Link key={item.id} href={item.link} className={styles.oneProject} target="_blank">
             <Image
-              src={"/projects/bimretail.uz.png"}
+              src={item.image}
               alt="bim"
               width={125}
               height={78}
             />
             <div className={styles.boxTextOneProject}>
-              <p>bimretail.uz</p>
+              <p>{item.name}</p>
               <h6>
-                BIM Retail — это молодой и развивающийся бренд в Ташкенте, сочетающий в себе кафе и специализированный магазин корейских товаров. Он ориентирован на вкусные напитки, модные закуски и яркую атмосферу, активно расширяя сеть через франчайзинг.
+                {item.description}
               </h6>
               <div className={styles.projectTexnologys}>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
+                {item.technologies.map((data) => (
+                  <div key={data.id} className={styles.oneTexnology}><h5>{data.name}</h5></div>
+                ))}
               </div>
             </div>
           </Link>
-
-                    <Link href={'https://bimretail.uz'} className={styles.oneProject} target="_blank">
-            <Image
-              src={"/projects/bimretail.uz.png"}
-              alt="bim"
-              width={125}
-              height={78}
-            />
-            <div className={styles.boxTextOneProject}>
-              <p>bimretail.uz</p>
-              <h6>
-                BIM Retail — это молодой и развивающийся бренд в Ташкенте, сочетающий в себе кафе и специализированный магазин корейских товаров. Он ориентирован на вкусные напитки, модные закуски и яркую атмосферу, активно расширяя сеть через франчайзинг.
-              </h6>
-              <div className={styles.projectTexnologys}>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-              </div>
-            </div>
-          </Link>
-
-                    <Link href={'https://bimretail.uz'} className={styles.oneProject} target="_blank">
-            <Image
-              src={"/projects/bimretail.uz.png"}
-              alt="bim"
-              width={125}
-              height={78}
-            />
-            <div className={styles.boxTextOneProject}>
-              <p>bimretail.uz</p>
-              <h6>
-                BIM Retail — это молодой и развивающийся бренд в Ташкенте, сочетающий в себе кафе и специализированный магазин корейских товаров. Он ориентирован на вкусные напитки, модные закуски и яркую атмосферу, активно расширяя сеть через франчайзинг.
-              </h6>
-              <div className={styles.projectTexnologys}>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-                <div className={styles.oneTexnology}>Next.js</div>
-              </div>
-            </div>
-          </Link>
+          )) : null}
         </div>
       </div>
     </section>
