@@ -1,0 +1,148 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  padding: 20px 0px;
+}
+
+.RightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 20px;
+  height: calc(100vh - 40px);
+  overflow-y: scroll;
+  gap: 50px;
+}
+
+.RightContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.RightContainer::-webkit-scrollbar-track {
+  background: #0a192f;
+  border-radius: 4px;
+}
+
+.RightContainer::-webkit-scrollbar-thumb {
+  background: #5eead585; /* цвет бегунка */
+  border-radius: 4px;
+}
+
+
+.RightContainer::-webkit-scrollbar-thumb:hover {
+  background: #5eead585;
+}
+
+.info {
+  opacity: 0.7;
+}
+
+.skillsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skillsSection h1, .projectsSection h1 {
+  font-size: 30px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.boxOneSkills {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s ease;
+}
+
+.boxOneSkills h6{
+    font-size: 12px;
+    text-align: center;
+}
+
+.skillsGrid:hover .boxOneSkills, .projectsSection:hover .oneProject {
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.skillsGrid:hover .boxOneSkills:hover, .projectsSection:hover .oneProject:hover {
+  background: rgba(30, 41, 59, 0.5);
+  box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1),
+    0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+  opacity: 1 !important;
+}
+
+.skillsGrid:hover .boxOneSkills:hover p, .projectsSection:hover .oneProject:hover p {
+  color: rgb(94 234 212);
+  transition: 0.2s ease;
+  opacity: 1 !important;
+}
+
+.projectsSection{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.oneProject{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+  transition: 0.2s;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.oneProject h6{
+  color: #fff;
+}
+
+.oneProject img {
+  border-radius: 10px;
+  width: 125px;
+  height: 78px;
+}
+
+.boxTextOneProject{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.boxTextOneProject h6{
+  opacity: 0.7;
+}
+
+.projectTexnologys{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.oneTexnology{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(45, 212, 191, .1);
+  color: rgb(94 234 212);
+  padding: 5px 10px;
+  border-radius: 10px;
+}

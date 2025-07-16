@@ -1,10 +1,10 @@
 .nav {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 40%;
   justify-content: space-between;
-  padding: 40px 20px 40px 60px;
+  padding: 20px;
 }
 
 .nav h1 {
@@ -125,5 +125,5 @@
 .navSocialButtonsRow{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
 }
