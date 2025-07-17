@@ -28,38 +28,40 @@ export default function Nav() {
           <button className={styles.buttonNotActive}>
             <hr /> <p>Projects</p>
           </button>
+          <button className={styles.buttonNotActive}>
+            <hr /> <p>Contacts</p>
+          </button>
         </div>
 
         <div className={styles.navBottomButtons}>
-      <AnimatePresence mode="wait">
-        {socialButton !== 0 && (
-          <motion.div
-            key={socialButton} 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.1 }}
-            className={styles.socialText}>
-            {socialButton === 1 ? (
-              <Link href="https://t.me/mu1zi47" target="_blank">
-                @mu1zi47
-              </Link>
-            ) : socialButton === 2 ? (
-              <Link href="https://github.com/mu1zi47" target="_blank">
-                mu1zi47
-              </Link>
-            ) : socialButton === 3 ? (
-              <Link href="https://instagram.com/mu1zi47" target="_blank">
-                @mu1zi47
-              </Link>
-            ) : socialButton === 4 ? (
-              <Link href="mailto:mu1zi47@yandex.uz">
-                mu1zi47@yandex.uz
-              </Link>
-            ) : null}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <AnimatePresence mode="wait">
+            {socialButton !== 0 && (
+              <motion.div
+                key={socialButton}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.1 }}
+                className={styles.socialText}
+              >
+                {socialButton === 1 ? (
+                  <Link href="https://t.me/mu1zi47" target="_blank">
+                    @mu1zi47
+                  </Link>
+                ) : socialButton === 2 ? (
+                  <Link href="https://github.com/mu1zi47" target="_blank">
+                    mu1zi47
+                  </Link>
+                ) : socialButton === 3 ? (
+                  <Link href="https://instagram.com/mu1zi47" target="_blank">
+                    @mu1zi47
+                  </Link>
+                ) : socialButton === 4 ? (
+                  <Link href="mailto:mu1zi47@yandex.uz">mu1zi47@yandex.uz</Link>
+                ) : null}
+              </motion.div>
+            )}
+          </AnimatePresence>
           <div className={styles.navSocialButtonsRow}>
             <button onClick={() => setSocialButton(socialButton !== 1 ? 1 : 0)}>
               <Image

@@ -47,7 +47,7 @@
   gap: 20px;
 }
 
-.skillsSection h1, .projectsSection h1 {
+.skillsSection h1, .projectsSection h1, .contactsSection {
   font-size: 30px;
 }
 
@@ -154,4 +154,76 @@
 .oneTexnology p{
   margin-top: 2px;
   line-height: 120%;
+}
+
+.contactsSection{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.boxOneInput{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boxOneInput input, .boxOneInput textarea{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  outline: none;
+  background: rgba(30, 41, 59, 0.5);
+  box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1),
+    0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+  border:1px solid #5eead585;
+  opacity: 1 ;
+  color: #5eead4;
+  border-radius: 10px;
+  opacity: 1;
+  font-size: 16px;
+  resize: none;
+}
+
+.boxOneInput textarea{
+  height: 110px;
+}
+
+.boxOneInput textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.boxOneInput textarea::-webkit-scrollbar-track {
+  background: unset;
+}
+
+.boxOneInput textarea::-webkit-scrollbar-thumb {
+  background: #5eead585;
+  border-radius: 20px;
+}
+
+.boxOneInput textarea::-webkit-scrollbar-thumb:hover {
+  background: #5eead585;
+}
+
+.boxOneInput input::placeholder, .boxOneInput textarea::placeholder{
+  color: #5eead585;
+  margin-top: 1px;
+}
+
+.sendMessage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #5eead4;
+    background-color: rgba(45, 212, 191, .1);
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.sendMessage:disabled{
+  opacity: 0.7;
 }
