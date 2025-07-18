@@ -11,10 +11,13 @@
   "dependencies": {
     "@tanstack/react-query": "^5.83.0",
     "axios": "^1.10.0",
+    "i": "^0.3.7",
     "motion": "^12.23.6",
     "next": "15.4.1",
+    "npm": "^11.4.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-loading-skeleton": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

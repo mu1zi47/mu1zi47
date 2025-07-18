@@ -3,6 +3,7 @@
 :root {
   --background: #0a192f;
   --foreground: #fff;
+  scroll-behavior: smooth;
 }
 
 body {

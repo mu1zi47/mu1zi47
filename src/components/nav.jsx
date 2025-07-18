@@ -5,7 +5,7 @@ import styles from "./nav.module.css";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
-export default function Nav() {
+export default function Nav({ activeSection }) {
   const [socialButton, setSocialButton] = useState(0);
   return (
     <>
@@ -19,17 +19,17 @@ export default function Nav() {
         </div>
 
         <div className={styles.navCenterButtons}>
-          <button className={styles.buttonActive}>
+          <button onClick={() => (document.getElementById('about')?.scrollIntoView())} className={styles.buttonNotActive}>
             <hr /> <p>About</p>
           </button>
-          <button className={styles.buttonNotActive}>
+          <button onClick={() => (document.getElementById('skills')?.scrollIntoView())} className={styles.buttonNotActive}>
             <hr /> <p>Skills</p>
           </button>
-          <button className={styles.buttonNotActive}>
+          <button onClick={() => (document.getElementById('projects')?.scrollIntoView())} className={styles.buttonNotActive}>
             <hr /> <p>Projects</p>
           </button>
-          <button className={styles.buttonNotActive}>
-            <hr /> <p>Contacts</p>
+          <button onClick={() => (document.getElementById('contacts')?.scrollIntoView())} className={styles.buttonNotActive}>
+            <hr /> <p>Write me</p>
           </button>
         </div>
 
