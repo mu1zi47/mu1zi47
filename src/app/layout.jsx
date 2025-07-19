@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import ToastProvider from "@/components/ToastProvider";
 import YandexMetrika from "@/components/yandexMetrika";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <QueryClientProvider client={queryClient}>
           <ToastProvider>
             <YandexMetrika />
+            <ParticlesBackground />
             {children}
           </ToastProvider>
         </QueryClientProvider>
