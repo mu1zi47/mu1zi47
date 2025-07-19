@@ -9,7 +9,12 @@ export default function Nav({ activeSection }) {
   const [socialButton, setSocialButton] = useState(0);
   return (
     <>
-      <nav className={styles.nav}>
+      <motion.nav
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.4 }}
+        className={styles.nav}>
         <div className={styles.navTopInfo}>
           <h1>mu1zi47</h1>
           <h2>Front End Developer</h2>
@@ -19,16 +24,32 @@ export default function Nav({ activeSection }) {
         </div>
 
         <div className={styles.navCenterButtons}>
-          <button onClick={() => (document.getElementById('about')?.scrollIntoView())} className={styles.buttonNotActive}>
+          <button
+            onClick={() => document.getElementById("about")?.scrollIntoView()}
+            className={styles.buttonNotActive}
+          >
             <hr /> <p>About</p>
           </button>
-          <button onClick={() => (document.getElementById('skills')?.scrollIntoView())} className={styles.buttonNotActive}>
+          <button
+            onClick={() => document.getElementById("skills")?.scrollIntoView()}
+            className={styles.buttonNotActive}
+          >
             <hr /> <p>Skills</p>
           </button>
-          <button onClick={() => (document.getElementById('projects')?.scrollIntoView())} className={styles.buttonNotActive}>
+          <button
+            onClick={() =>
+              document.getElementById("projects")?.scrollIntoView()
+            }
+            className={styles.buttonNotActive}
+          >
             <hr /> <p>Projects</p>
           </button>
-          <button onClick={() => (document.getElementById('contacts')?.scrollIntoView())} className={styles.buttonNotActive}>
+          <button
+            onClick={() =>
+              document.getElementById("contacts")?.scrollIntoView()
+            }
+            className={styles.buttonNotActive}
+          >
             <hr /> <p>Write me</p>
           </button>
         </div>
@@ -56,8 +77,6 @@ export default function Nav({ activeSection }) {
                   <Link href="https://instagram.com/mu1zi47" target="_blank">
                     @mu1zi47
                   </Link>
-                ) : socialButton === 4 ? (
-                  <Link href="mailto:mu1zi47@yandex.uz">mu1zi47@yandex.uz</Link>
                 ) : null}
               </motion.div>
             )}
@@ -77,12 +96,9 @@ export default function Nav({ activeSection }) {
             <button onClick={() => setSocialButton(socialButton !== 3 ? 3 : 0)}>
               <Image src="/insta.svg" alt="insta" width={24} height={24} />
             </button>
-            <button onClick={() => setSocialButton(socialButton !== 4 ? 4 : 0)}>
-              <Image src="/mail.svg" alt="mail" width={24} height={24} />
-            </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </>
   );
 }

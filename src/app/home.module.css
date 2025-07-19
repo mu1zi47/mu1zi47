@@ -6,7 +6,6 @@
   align-items: start;
   width: 100%;
   max-width: 1440px;
-  padding: 20px 0px;
 }
 
 .RightContainer {
@@ -24,7 +23,8 @@
 .skillsSection,
 .contactsSection,
 .projectsSection,
-.aboutSection {
+.aboutSection,
+.kanomiSection {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -36,6 +36,30 @@
 .contactsSection h1,
 .aboutSection h1 {
   font-size: 30px;
+}
+
+.navTopInfo {
+  display: none;
+  flex-direction: column;
+}
+
+.navTopInfo h1 {
+  font-size: 50px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.navTopInfo h2 {
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.navTopInfo h6 {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-top: 5px;
 }
 
 .skillsGrid {
@@ -115,6 +139,7 @@
 
 .boxTextOneProject h6 {
   opacity: 0.7;
+  font-size: 12px;
 }
 
 .projectTexnologys {
@@ -198,7 +223,7 @@
   opacity: 0.7;
 }
 
-.footerSection{
+.footerSection {
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -209,13 +234,103 @@
   opacity: 0.7;
 }
 
-
-.hovered {
-  opacity: 0 !important;
-  transition: 0.3s;
+.navSocialButtonsRow {
+  display: none;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
 }
 
-.footerSection:hover .hovered {
-  opacity: 0.7 !important; 
-  transition: 0.3s;
+/* kanomi */
+
+/* .boomBtn {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.boomBtn:hover {
+  background: darkred;
+  transform: scale(1.05);
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-10px, 0); }
+  50% { transform: translate(10px, 0); }
+  75% { transform: translate(-10px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+.destroyedScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  z-index: 9999;
+}
+ */
+
+/* adaptive */
+
+@media screen and (max-width: 800px) {
+  .footerSection {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .RightContainer {
+    width: 100%;
+  }
+
+  .navSocialButtonsRow,
+  .navTopInfo {
+    display: flex;
+  }
+
+  .aboutSection h1,
+  .skillsSection h1,
+  .projectsSection h1,
+  .contactsSection h1 {
+    position: sticky;
+    top: 0px;
+    background-color: #0a192fe9;
+    z-index: 100;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .oneTexnology h5,
+  .info {
+    font-size: 12px;
+  }
+  .projectTexnologys {
+    gap: 5px;
+  }
+
+  .oneProject {
+    flex-direction: column;
+  }
+
+  .boxInputsRow {
+    flex-direction: column;
+  }
+
 }

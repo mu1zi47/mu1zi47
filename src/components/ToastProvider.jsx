@@ -16,7 +16,7 @@ export default function ToastProvider({ children }) {
     // удалить через 3 сек
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 5000);
+    }, 4000);
   };
 
   return (
@@ -53,6 +53,9 @@ const styles = {
     flexDirection: "column",
     gap: "10px",
     zIndex: 9999,
+    width: "auto",
+    maxWidth: "450px",
+    padding:'0px 20px 0px 0px',
   },
   toast: {
     padding: "12px 20px",

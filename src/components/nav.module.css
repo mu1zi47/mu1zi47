@@ -89,43 +89,49 @@
   height: 1.5px;
 }
 
-.buttonNotActive:hover p{
-    opacity: 1;
-    transition: 0.1s ease;
+.buttonNotActive:hover p {
+  opacity: 1;
+  transition: 0.1s ease;
 }
 
-.navBottomButtons{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 15px;
-    height: 65px;
+.navBottomButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 15px;
+  height: 65px;
 }
 
-.navBottomButtons button{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+.navBottomButtons button {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
-.navBottomButtons img{
-    opacity: 0.7;
-    transition: 0.1s ease; 
+.navBottomButtons img {
+  opacity: 0.7;
+  transition: 0.1s ease;
 }
 
-.navBottomButtons img:hover{
-    opacity: 1;
-    transition: 0.1s ease;
+.navBottomButtons img:hover {
+  opacity: 1;
+  transition: 0.1s ease;
 }
 
-.oneSocial{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+.oneSocial {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
-.navSocialButtonsRow{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.navSocialButtonsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+@media screen and (max-width:800px) {
+  .nav{
+    display: none;
+  }
 }
