@@ -10,12 +10,14 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { motion } from "motion/react";
 import { useToast } from "@/components/ToastProvider";
+import ImageWithLoader from "@/components/imageLoader";
 
 export default function Home() {
   const api = useApi();
   const { showToast } = useToast();
   const [memMessage, setMemMessage] = useState();
   const [destroyed, setDestroyed] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const fetchProjects = async () => {
     const response = await api.get("projects/");
@@ -171,10 +173,13 @@ export default function Home() {
         <motion.section className={styles.mainContainer}>
           <Nav />
           <div className={styles.RightContainer}>
-            <motion.div initial={{ opacity: 0, y: 50 }}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay:0.5 }}
-              viewport={{ once: true, amount: 0.4 }} className={styles.navTopInfo}>
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+              viewport={{ once: true, amount: 0.4 }}
+              className={styles.navTopInfo}
+            >
               <h1>mu1zi47</h1>
               <h2>Front End Developer</h2>
               <h6>
@@ -185,7 +190,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay:0.5 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
               viewport={{ once: true, amount: 0.4 }}
               id="about"
               className={styles.aboutSection}
@@ -213,7 +218,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
               viewport={{ once: true, amount: 0.4 }}
               id="skills"
               className={styles.skillsSection}
@@ -277,7 +282,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1.5 }}
               viewport={{ once: true, amount: 0.05 }}
               id="projects"
               className={styles.projectsSection}
@@ -384,9 +389,13 @@ export default function Home() {
                     key={item.id}
                     href={item.link}
                     className={styles.oneProject}
-                    target="_blank"
-                  >
-                    <Image src={item.image} alt="bim" width={125} height={78} />
+                    target="_blank">
+                    <ImageWithLoader
+                      src={item.image}
+                      alt={item.name}
+                      width={125}
+                      height={78}
+                    />
                     <div className={styles.boxTextOneProject}>
                       <p>{item.name}</p>
                       <h6>{item.description}</h6>
@@ -406,9 +415,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true }}
               id="contacts"
-              className={styles.contactsSection}>
+              className={styles.contactsSection}
+            >
               <h1>Write me</h1>
               <div className={styles.boxInputsRow}>
                 <div className={styles.boxOneInput}>
