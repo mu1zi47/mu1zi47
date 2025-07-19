@@ -3,6 +3,7 @@ import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import ToastProvider from "@/components/ToastProvider";
+import YandexMetrika from "@/components/yandexMetrika";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -16,7 +17,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <QueryClientProvider client={queryClient}>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            <YandexMetrika />
+            {children}
+          </ToastProvider>
         </QueryClientProvider>
       </body>
     </html>
