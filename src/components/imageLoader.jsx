@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
-import styles from '../app/home.module.css';
+import styles from "../app/home.module.css";
 
 export default function ImageWithLoader({ src, alt, width, height }) {
   const [loaded, setLoaded] = useState(false);
@@ -9,7 +9,14 @@ export default function ImageWithLoader({ src, alt, width, height }) {
   return (
     <div className={styles.img} style={{ position: "relative", width, height }}>
       {/* Пока грузится → показываем скелетон */}
-      {!loaded && <Skeleton width={width} height={height} />}
+      {!loaded && (
+        <Skeleton
+          width={width}
+          height={height}
+          baseColor="#1e293b80"
+          highlightColor="#2dd4bf1a"
+        />
+      )}
 
       {/* Картинка появится плавно, когда загрузится */}
       <Image
