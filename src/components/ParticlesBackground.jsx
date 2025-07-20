@@ -15,12 +15,12 @@ export default function ParticlesBackground() {
       init={particlesInit}
       options={{
         background: {
-          color: "#0a192f", // твой тёмный фон
+          color: "#0a1921", // твой тёмный фон
         },
         fpsLimit: 60,
         particles: {
           number: {
-            value: 60, // сколько частиц
+            value: 100, // сколько частиц
             density: {
               enable: true,
               area: 800,
