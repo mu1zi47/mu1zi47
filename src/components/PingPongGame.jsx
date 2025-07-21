@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useToast } from "./ToastProvider";
 
 export default function PingPongGame() {
   const canvasRef = useRef(null);
+  const { showToast } = useToast();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,6 +27,9 @@ export default function PingPongGame() {
     let dx = 3;
     let dy = -3;
 
+    let gameOver = false; 
+    let animationId = null; // чтобы можно было отменить requestAnimationFrame
+
     const drawBall = () => {
       ctx.beginPath();
       ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
@@ -41,7 +46,25 @@ export default function PingPongGame() {
       ctx.closePath();
     };
 
+    const gameOverHandler = () => {
+      if (gameOver) return; // если уже было, не повторяем
+      gameOver = true;
+
+      // Останавливаем анимацию
+      if (animationId) cancelAnimationFrame(animationId);
+
+      showToast("💥 Game Over!", "error");
+
+      // Немного задержки перед перезагрузкой
+      setTimeout(() => {
+        document.location.reload();
+      }, 1000);
+    };
+
     const draw = () => {
+      // если игра уже окончена, сразу выходим
+      if (gameOver) return;
+
       ctx.clearRect(0, 0, width, height);
       drawBall();
       drawPaddle();
@@ -63,9 +86,9 @@ export default function PingPongGame() {
         if (x > paddleX && x < paddleX + paddleWidth) {
           dy = -dy;
         } else if (y + dy > height - ballRadius) {
-          // Игра окончена
-          alert("💥 Game Over!");
-        //   document.location.reload();
+          // 💥 Игра окончена
+          gameOverHandler();
+          return;
         }
       }
 
@@ -76,7 +99,7 @@ export default function PingPongGame() {
         paddleX -= 7;
       }
 
-      requestAnimationFrame(draw);
+      animationId = requestAnimationFrame(draw);
     };
 
     const keyDownHandler = (e) => {
@@ -98,11 +121,12 @@ export default function PingPongGame() {
     document.addEventListener("keydown", keyDownHandler);
     document.addEventListener("keyup", keyUpHandler);
 
-    draw();
+    animationId = requestAnimationFrame(draw);
 
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
       document.removeEventListener("keyup", keyUpHandler);
+      if (animationId) cancelAnimationFrame(animationId);
     };
   }, []);
 
@@ -112,12 +136,11 @@ export default function PingPongGame() {
       width={400}
       height={300}
       style={{
-        width:'100%',
-        maxWidth:'400px',
+        width: "100%",
+        maxWidth: "400px",
         border: "2px solid #00ffe5",
         background: "#0d0221",
         display: "block",
-        // margin: "20px auto",
       }}
     />
   );
