@@ -151,16 +151,13 @@ export default function Home() {
 
   useEffect(() => {
     const konamiSequence = [
-      "ArrowUp",
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowLeft",
-      "ArrowRight",
-      "b",
-      "a",
+      "m",
+      "u",
+      "1",
+      "z",
+      "i",
+      "4",
+      "7",
     ];
 
     let currentIndex = 0;
