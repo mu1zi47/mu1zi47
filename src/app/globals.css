@@ -39,7 +39,7 @@ body ::selection, body ::-moz-selection{
 }
 
 .mySwiper{
-  height: 200px;
+  height: 250px;
   margin-bottom: 0px;
   border-radius: 10px;
 }
@@ -77,12 +77,12 @@ body ::selection, body ::-moz-selection{
 
 @media screen and (max-width:1000px) {
   .mySwiper {
-    height: 250px;
+    height: 300px;
   }
 }
 
 @media screen and (max-width:500px) {
   .mySwiper{
-    height: 320px;
+    height: 370px;
   }
 }
