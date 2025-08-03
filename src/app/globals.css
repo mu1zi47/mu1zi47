@@ -37,3 +37,52 @@ body ::selection, body ::-moz-selection{
   src: url('/fonts/MazzardH-Regular.otf') format('opentype');
   font-weight: 500;
 }
+
+.mySwiper{
+  height: 200px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+}
+
+.mySwiper2{
+  height: 140px;
+}
+
+.mySwiper .swiper-pagination-bullet, .mySwiper2 .swiper-pagination-bullet  {
+  background-color: rgba(45, 212, 190, 0.331);
+  opacity: 1;
+  border-radius: 20px;
+  transition: 0.2s;
+  width: 5px;
+  height: 5px;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background-color: #5eead4;
+  opacity: 1;
+  width: 5px;
+  border-radius: 20px;
+  transition: 0.2s;
+  height: 15px;
+}
+
+.mySwiper2 .swiper-pagination-bullet-active{
+  background-color: #5eead4;
+  opacity: 1;
+  width: 15px;
+  border-radius: 20px;
+  transition: 0.2s;
+  height: 5px;
+}
+
+@media screen and (max-width:1000px) {
+  .mySwiper {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .mySwiper{
+    height: 320px;
+  }
+}

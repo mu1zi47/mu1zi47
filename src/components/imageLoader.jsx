@@ -10,26 +10,14 @@ export default function ImageWithLoader({ src, alt, width, height }) {
     <div className={styles.img} style={{ position: "relative", width, height }}>
       {/* Пока грузится → показываем скелетон */}
       {!loaded && (
-        <Skeleton
-          width={width}
-          height={height}
-          baseColor="#1e293b80"
-          highlightColor="#2dd4bf1a"
-        />
-      )}
-
-      {/* Картинка появится плавно, когда загрузится */}
+        <Skeleton width={width} height={height} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/>)}
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        style={{
-          opacity: loaded ? 1 : 0,
-          transition: "opacity 0.4s ease-in-out",
-        }}
-        onLoadingComplete={() => setLoaded(true)}
-      />
+        style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.4s ease-in-out", borderRadius: 10}}
+        onLoadingComplete={() => setLoaded(true)}/>
     </div>
   );
 }

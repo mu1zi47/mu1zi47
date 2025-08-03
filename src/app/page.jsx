@@ -14,6 +14,12 @@ import ImageWithLoader from "@/components/imageLoader";
 import confetti from "canvas-confetti";
 import PingPongGame from "@/components/PingPongGame";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel, Pagination } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -255,114 +261,41 @@ export default function Home() {
               >
                 <h1>Skills</h1>
                 <div className={styles.skillsGrid}>
+                  <Swiper slidesPerView={3} spaceBetween={10} pagination={{clickable: true}} modules={[Pagination, Mousewheel]} mousewheel={true} className="mySwiper2">
                   {isSkillsLoading ? (
                     <>
                       <div className={styles.boxOneSkills}>
-                        <p>
-                          <Skeleton
-                            width={80}
-                            height={24}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </p>
-                        <h6>
-                          <Skeleton
-                            width={50}
-                            height={18}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </h6>
+                        <p><Skeleton width={80} height={24} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/></p>
+                        <h6><Skeleton width={50} height={18} baseColor="#1e293b80" highlightColor="#2dd4bf1a" /></h6>
                       </div>
                       <div className={styles.boxOneSkills}>
-                        <p>
-                          <Skeleton
-                            width={80}
-                            height={24}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </p>
-                        <h6>
-                          <Skeleton
-                            width={50}
-                            height={18}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </h6>
+                        <p><Skeleton width={80} height={24} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/></p>
+                        <h6><Skeleton width={50} height={18} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/></h6>
                       </div>
                     </>
                   ) : skills?.length > 0 ? (
                     skills.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={item.link}
-                        target="_blank"
-                        className={styles.boxOneSkills}
-                      >
+                      <SwiperSlide className={styles.swiperSlide2}>
+                      <Link key={item.id} href={item.link} target="_blank" className={styles.boxOneSkills}>
                         <p>{item.name}</p>
                         <h6>{item.level}</h6>
                       </Link>
+                      </SwiperSlide>
                     ))
                   ) : null}
+                  </Swiper>
                 </div>
               </motion.div>
               <motion.div
                 variants={itemVariants}
                 id="projects"
-                className={styles.projectsSection}
-              >
+                className={styles.projectsSection}>
                 <h1>Projects</h1>
+                <Swiper 
+                  direction={'vertical'} slidesPerView={1} spaceBetween={30} mousewheel={true} 
+                  pagination={{clickable: true,}} modules={[Mousewheel, Pagination]} className="mySwiper" >
                 {isProjectsLoading ? (
                   <>
-                    <div className={styles.oneProject}>
-                      <Skeleton
-                        width={125}
-                        height={78}
-                        baseColor="#1e293b80"
-                        highlightColor="#2dd4bf1a"
-                      />
-                      <div className={styles.boxTextOneProject}>
-                        <p>
-                          <Skeleton
-                            width={100}
-                            height={24}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </p>
-                        <h6>
-                          <Skeleton
-                            width={"100%"}
-                            height={20}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </h6>
-                        <div className={styles.projectTexnologys}>
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
-                        </div>
-                      </div>
-                    </div>
                     <div className={styles.oneProject}>
                       <Skeleton
                         width={125}
@@ -412,21 +345,15 @@ export default function Home() {
                   </>
                 ) : projects?.length > 0 ? (
                   projects.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.link}
-                      className={styles.oneProject}
-                      target="_blank"
-                    >
-                      <ImageWithLoader
-                        src={item.image}
-                        alt={item.name}
-                        width={125}
-                        height={78}
-                      />
-                      <div className={styles.boxTextOneProject}>
-                        <p>{item.name}</p>
-                        <h6>{item.description}</h6>
+                    <SwiperSlide key={item.id} className={styles.swiperSlide}>
+                      <Link href={item.link} className={styles.oneProject} target="_blank">
+                        <div className={styles.boxProjectImageAndName}>
+                        <ImageWithLoader src={item.image} alt={item.name} width={125} height={78}/>
+                        <div className={styles.boxTextOneProject}>
+                          <p>{item.name}</p>
+                          <h6>{item.description}</h6>
+                        </div>
+                        </div>
                         <div className={styles.projectTexnologys}>
                           {item.technologies.map((data) => (
                             <div key={data.id} className={styles.oneTexnology}>
@@ -434,10 +361,11 @@ export default function Home() {
                             </div>
                           ))}
                         </div>
-                      </div>
                     </Link>
+                    </SwiperSlide>
                   ))
                 ) : null}
+                </Swiper>
               </motion.div>
               <motion.div
                 variants={itemVariants}
