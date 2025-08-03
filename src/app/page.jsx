@@ -291,9 +291,9 @@ export default function Home() {
                 id="projects"
                 className={styles.projectsSection}>
                 <h1>Projects</h1>
-                <Swiper 
-                  direction={'vertical'} slidesPerView={1} spaceBetween={30} mousewheel={true} 
-                  pagination={{clickable: true,}} modules={[Mousewheel, Pagination]} className="mySwiper" >
+                <Swiper
+                  direction={'vertical'} slidesPerView={1} spaceBetween={30} mousewheel={true}
+                  pagination={{clickable: true,}} modules={[Mousewheel, Pagination]} className="mySwiper">
                 {isProjectsLoading ? (
                   <>
                     <div className={styles.oneProject}>
