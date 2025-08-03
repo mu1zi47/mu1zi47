@@ -15,7 +15,7 @@ import confetti from "canvas-confetti";
 import PingPongGame from "@/components/PingPongGame";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination } from 'swiper/modules';
+import { Mousewheel, Pagination, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -254,14 +254,11 @@ export default function Home() {
                   web.
                 </p>
               </motion.div>
-              <motion.div
-                variants={itemVariants}
-                id="skills"
-                className={styles.skillsSection}
-              >
+              <motion.div variants={itemVariants} id="skills" className={styles.skillsSection}>
                 <h1>Skills</h1>
                 <div className={styles.skillsGrid}>
-                  <Swiper slidesPerView={3} spaceBetween={10} pagination={{clickable: true}} modules={[Pagination, Mousewheel]} mousewheel={true} className="mySwiper2">
+                  <Swiper slidesPerView={3} spaceBetween={10} pagination={{clickable: true}} 
+                  modules={[Pagination, Mousewheel]} mousewheel={true} className="mySwiper2">
                   {isSkillsLoading ? (
                     <>
                       <div className={styles.boxOneSkills}>
