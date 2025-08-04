@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 80px 20px 20px 20px;
   gap: 50px;
 }
 
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  scroll-margin-top: 50px;
+  scroll-margin-top: 60px;
 }
 
 .kanomiSection {
@@ -95,15 +95,6 @@
   font-size: 30px;
 }
 
-.aboutSection h1,
-.skillsSection h1,
-.projectsSection h1,
-.contactsSection h1 {
-  position: sticky;
-  top: 0px;
-  background-color: #0a1921d7;
-  z-index: 100;
-}
 
 .navTopInfo {
   display: flex;
@@ -227,7 +218,7 @@
 .projectTexnologys {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 2px;
   flex-wrap: wrap;
 }
 
@@ -349,9 +340,6 @@
   .oneTexnology h5,
   .info {
     font-size: 12px;
-  }
-  .projectTexnologys {
-    gap: 5px;
   }
 
   .oneProject {

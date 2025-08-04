@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./home.module.css";
 import useApi from "@/utils/api";
+import Nav from "@/components/nav";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -13,6 +14,7 @@ import ImageWithLoader from "@/components/imageLoader";
 import confetti from "canvas-confetti";
 import PingPongGame from "@/components/PingPongGame";
 import Cookies from "js-cookie";
+import { useLanguage } from "@/context/languageContext";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Pagination, Autoplay } from 'swiper/modules';
@@ -36,6 +38,7 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const { translate } = useLanguage();
   const api = useApi();
   const { showToast } = useToast();
   const [memMessage, setMemMessage] = useState();
@@ -100,19 +103,19 @@ export default function Home() {
   };
 
   const successMessages = [
-    "✅ Message delivered faster than pizza! 🍕",
-    "🎉 Bingo! Sent with zero bugs (for now) 🤫",
-    "🚀 Your message flew into space and arrived safely!",
-    "💌 Message successfully sent. Hope the receiver loves it!",
-    "✨ All good! Even the server smiled :)",
+    `✅ ${translate("Message delivered faster than pizza!")} 🍕`,
+    `🎉 ${translate("Bingo! Sent with zero bugs (for now)")} 🤫`,
+    `🚀 ${translate("Your message flew into space and arrived safely!")}`,
+    `💌 ${translate("Message successfully sent. Hope the receiver loves it!")}`,
+    `✨ ${translate("All good! Even the server smiled :)")}`,
   ];
 
   const errorMessages = [
-    "❌ Oops! Looks like the server went for a tea break ☕",
-    "🚨 Error 404… but not really 404 🤔",
-    "💥 Beep-boop, I crashed. Try again!",
-    "🦖 Server went on a prehistoric vacation…",
-    "🤖 I tried, but the internet said 'no'",
+    `❌ ${translate("Oops! Looks like the server went for a tea break")} ☕`,
+    `🚨 ${translate("Error 404… but not really 404")} 🤔`,
+    `💥 ${translate("Beep-boop, I crashed. Try again!")}`,
+    `🦖 ${translate("Server went on a prehistoric vacation…")}`,
+    `🤖 ${translate("I tried, but the internet said 'no'")}`,
   ];
 
   const handleSendMessage = async () => {
@@ -125,13 +128,13 @@ export default function Home() {
       let toastMessage = "";
 
       if (name.trim().toLowerCase() === "rick") {
-        toastMessage = "🎵 Sending a special track for Rick...";
+        toastMessage = `🎵 ${translate("Sending a special track for Rick...")}`;
         showToast(toastMessage, "success");
         setTimeout(() => {
           window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         }, 1000);
       } else if (name.trim().toLowerCase() === "admin") {
-        toastMessage = "👀 Oh, admin! Don’t forget to check the logs.";
+        toastMessage = `👀 ${translate("Oh, admin! Don’t forget to check the logs.")}`;
         showToast(toastMessage, "success");
       } else {
         const randomSuccess =
@@ -174,12 +177,9 @@ export default function Home() {
       if (e.key === konamiSequence[currentIndex]) {
         currentIndex++;
         if (currentIndex === konamiSequence.length) {
-          setKanomi(true); // активируем кнопку
-          currentIndex = 0; // сбрасываем после активации
-          showToast(
-            "Secret mode activated… but nothing changed. Or did it? 👀",
-            "success"
-          );
+          setKanomi(true);
+          currentIndex = 0;
+          showToast(`${translate("Secret mode activated… but nothing changed. Or did it?")} 👀`, "success");
           confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
           setTimeout(() => {
             confetti({
@@ -213,47 +213,28 @@ export default function Home() {
     <>
       {destroyed === false ? (
         <>
+        <Nav/>
           <motion.section variants={containerVariants} initial="hidden"
             whileInView="visible" viewport={{ once: true, amount: 0.2 }} className={styles.mainContainer}>
             <div className={styles.RightContainer}>
-              <motion.div variants={itemVariants} className={styles.navTopInfo}>
-                <h1>mu1zi47</h1>
-                <h2>Front End Developer</h2>
-                <h6>
-                  I build accessible, pixel-perfect digital experiences for the
-                  web.
-                </h6>
-              </motion.div>
-              <motion.div
-                variants={itemVariants}
-                id="about"
-                className={styles.aboutSection}
-              >
-                <h1>About</h1>
+              <motion.div variants={itemVariants} id="about" className={styles.aboutSection}>
+                <h1>{translate('About')}</h1>
                 <p className={styles.info}>
-                  I’m a frontend developer passionate about building clean,
-                  accessible, and pixel-perfect user interfaces that combine
-                  thoughtful design with smooth user experiences. I enjoy
-                  crafting web applications that not only look great but are
-                  optimized for performance and usability.
+                  {translate('I’m a frontend developer')}
                   <br />
                   <br />
-                  So far, most of my work has been on personal projects,
-                  including
-                  <Link href={"https://comica.tcats.uz"}> Comica TCats</Link>,
-                  where I focused on creating a seamless and visually engaging
-                  experience. <br />
+                  {translate("So far")}
+                  <Link href={"https://comica.tcats.uz"}> Comica TCats</Link>,{" "}
+                  {translate("where I focused on creating")}
                   <br />
-                  I’m always exploring new technologies and improving my craft
-                  with each project I build. In my free time, I dive into mobile
-                  development, learning Flutter to expand my skills beyond the
-                  web.
+                  <br />
+                  {translate("I’m always exploring new technologies")}
                 </p>
               </motion.div>
               <motion.div variants={itemVariants} id="skills" className={styles.skillsSection}>
-                <h1>Skills</h1>
+                <h1>{translate("Skills")}</h1>
                 <div className={styles.skillsGrid}>
-                  <Swiper slidesPerView={3} spaceBetween={10} pagination={{clickable: true}} 
+                  <Swiper slidesPerView={3} spaceBetween={2} pagination={{clickable: true}} 
                   modules={[Pagination, Mousewheel]} mousewheel={true} className="mySwiper2">
                   {isSkillsLoading ? (
                     <>
@@ -283,55 +264,21 @@ export default function Home() {
                 variants={itemVariants}
                 id="projects"
                 className={styles.projectsSection}>
-                <h1>Projects</h1>
+                <h1>{translate("Projects")}</h1>
                 <Swiper
                   direction={'vertical'} slidesPerView={1} spaceBetween={30} mousewheel={true}
                   pagination={{clickable: true,}} modules={[Mousewheel, Pagination]} className="mySwiper">
                 {isProjectsLoading ? (
                   <>
                     <div className={styles.oneProject}>
-                      <Skeleton
-                        width={125}
-                        height={78}
-                        baseColor="#1e293b80"
-                        highlightColor="#2dd4bf1a"
-                      />
+                      <Skeleton width={125} height={78} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/>
                       <div className={styles.boxTextOneProject}>
-                        <p>
-                          <Skeleton
-                            width={100}
-                            height={24}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </p>
-                        <h6>
-                          <Skeleton
-                            width={"100%"}
-                            height={20}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                          />
-                        </h6>
+                        <p><Skeleton width={100} height={24} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/></p>
+                        <h6><Skeleton width={"100%"} height={20} baseColor="#1e293b80" highlightColor="#2dd4bf1a" /></h6>
                         <div className={styles.projectTexnologys}>
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
-                          <Skeleton
-                            width={60}
-                            baseColor="#1e293b80"
-                            highlightColor="#2dd4bf1a"
-                            className={styles.oneTexnology}
-                          />
+                          <Skeleton width={60} baseColor="#1e293b80" highlightColor="#2dd4bf1a" className={styles.oneTexnology}/>
+                          <Skeleton width={60} baseColor="#1e293b80" highlightColor="#2dd4bf1a" className={styles.oneTexnology} />
+                          <Skeleton width={60} baseColor="#1e293b80" highlightColor="#2dd4bf1a" className={styles.oneTexnology} />
                         </div>
                       </div>
                     </div>
@@ -361,31 +308,21 @@ export default function Home() {
                 </Swiper>
               </motion.div>
               <motion.div variants={itemVariants} id="contacts" className={styles.contactsSection}>
-                <h1>Write me</h1>
+                <h1>{translate("Write me")}</h1>
                 <div className={styles.boxInputsRow}>
                   <div className={styles.boxOneInput}>
-                    <input type="text" placeholder="Name" value={name} onChange={handleNameChange} maxLength={50}/>
+                    <input type="text" placeholder={translate("Name")} value={name} onChange={handleNameChange} maxLength={50}/>
                   </div>
                   <div className={styles.boxOneInput}>
-                    <input type="text" placeholder="Telegram username" value={telegramUser} onChange={handleTelegramChange} 
+                    <input type="text" placeholder={translate("Telegram username")} value={telegramUser} onChange={handleTelegramChange} 
                     onFocus={handleTelegramFocus} onBlur={handleTelegramBlur} maxLength={50}/>
                   </div>
                 </div>
                 <div className={styles.boxOneInput}>
-                  <textarea
-                    type="text"
-                    placeholder="Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    maxLength={500}
-                  />
+                  <textarea type="text" placeholder={translate("Message")} value={message} onChange={(e) => setMessage(e.target.value)} maxLength={500}/>
                 </div>
-                <button
-                  onClick={handleSendMessage}
-                  disabled={disabledButton}
-                  className={styles.sendMessage}
-                >
-                  <p>Send Message</p>
+                <button onClick={handleSendMessage} disabled={disabledButton} className={styles.sendMessage} >
+                  <p>{translate("Send Message")}</p>
                 </button>
               </motion.div>
               <div className={styles.footerSection}>
@@ -407,7 +344,7 @@ export default function Home() {
           {kanomi && (
             <div className={styles.kanomiSection}>
               <button onClick={() => setKanomiModal(true)}>
-                <h2>🏓 Play Ping Pong 🏓</h2>
+                <h2>🏓 {translate("Play Ping Pong")} 🏓</h2>
               </button>
             </div>
           )}

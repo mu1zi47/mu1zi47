@@ -1,0 +1,201 @@
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(10, 25, 33, 0.5);
+  height: 60px;
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0px 20px;
+}
+
+.nav h1 {
+  font-size: 40px;
+}
+
+.navCenterButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  transition: 0.2s;
+  align-items: center;
+}
+
+.navCenterButtons button {
+  height: min-content;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.navCenterButtons button p {
+  margin-top: 1px;
+}
+
+.navCenterButtons button:hover,
+.languageButton:hover,
+.burgerMenu:hover {
+  color: #5eead4;
+  transition: 0.2s;
+  background-color: rgba(45, 212, 191, 0.1);
+}
+
+.LanguageSwitcher {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.languageButton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.LanguageModal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 20px;
+  background: rgba(10, 25, 33, 1);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0),
+    0px 0px 0px 1px rgba(255, 255, 255, 0) inset;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  gap: 2px;
+}
+
+.LanguageModal button {
+  color: var(--foreground);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.LanguageModal button:hover {
+  background-color: rgba(45, 212, 191, 0.1);
+  transition: 0.2s;
+}
+
+.LanguageModal button p {
+  margin-top: 1px;
+}
+
+.LanguageModal button:hover p {
+  color: #5eead4;
+  transition: 0.2s;
+}
+
+.burgerMenu {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  display: none;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.burgerMenu:hover .hover,
+.hovered {
+  display: none;
+}
+
+.burgerMenu:hover .hovered {
+  display: flex;
+}
+
+.adaptiveModalBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.adaptiveModalBox button {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.adaptiveModalBox button:hover {
+  background-color: rgba(45, 212, 191, 0.1);
+  border-radius: 10px;
+  transition: 0.2s;
+  color: #5eead4;
+}
+
+.rowLanguages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  gap: 2px;
+}
+
+.rowLanguages .oneLanguage,
+.rowLanguages .oneLanguageActive {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  padding: 15px 10px;
+  transition: 0.2s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.rowLanguages .oneLanguageActive {
+  background-color: rgba(45, 212, 191, 0.1);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1050px) {
+  .LanguageModal {
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navCenterButtons,
+  .LanguageSwitcher {
+    display: none;
+  }
+
+  .burgerMenu {
+    display: flex;
+  }
+}
