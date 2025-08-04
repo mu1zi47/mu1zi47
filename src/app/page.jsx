@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Nav from "@/components/nav";
 import Link from "next/link";
 import styles from "./home.module.css";
 import useApi from "@/utils/api";
@@ -214,14 +213,8 @@ export default function Home() {
     <>
       {destroyed === false ? (
         <>
-          <motion.section
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className={styles.mainContainer}
-          >
-            <Nav />
+          <motion.section variants={containerVariants} initial="hidden"
+            whileInView="visible" viewport={{ once: true, amount: 0.2 }} className={styles.mainContainer}>
             <div className={styles.RightContainer}>
               <motion.div variants={itemVariants} className={styles.navTopInfo}>
                 <h1>mu1zi47</h1>
@@ -396,33 +389,18 @@ export default function Home() {
                 </button>
               </motion.div>
               <div className={styles.footerSection}>
+                <p className={styles.hover}>© mu1zi47 2025</p>
                 <div className={styles.navSocialButtonsRow}>
                   <Link href={"https://t.me/mu1zi47"}>
-                    <Image
-                      src="/telegram.svg"
-                      alt="telegram"
-                      width={24}
-                      height={24}
-                    />
+                    <Image src="/telegram.svg" alt="telegram" width={24} height={24}/>
                   </Link>
                   <Link href={"https://github.com/mu1zi47"}>
-                    <Image
-                      src="/github.svg"
-                      alt="github"
-                      width={24}
-                      height={24}
-                    />
+                    <Image src="/github.svg" alt="github" width={24} height={24}/>
                   </Link>
                   <Link href={"https://instagram.com/mu1zi47/"}>
-                    <Image
-                      src="/insta.svg"
-                      alt="insta"
-                      width={24}
-                      height={24}
-                    />
+                    <Image src="/insta.svg" alt="insta" width={24} height={24}/>
                   </Link>
                 </div>
-                <p className={styles.hover}>© mu1zi47 2025</p>
               </div>
             </div>
           </motion.section>
@@ -435,14 +413,8 @@ export default function Home() {
           )}
           {kanomiModal && (
             <>
-              <div
-                className={styles.kanomiModalOverlay}
-                onClick={() => setKanomiModal(false)}
-              >
-                <div
-                  className={styles.kanomiModal}
-                  onClick={(e) => e.stopPropagation()}
-                >
+              <div className={styles.kanomiModalOverlay} onClick={() => setKanomiModal(false)}>
+                <div className={styles.kanomiModal} onClick={(e) => e.stopPropagation()}>
                   <PingPongGame />
                 </div>
               </div>
