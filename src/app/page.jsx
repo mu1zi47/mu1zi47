@@ -38,7 +38,7 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const { translate } = useLanguage();
+  const { translate, language } = useLanguage();
   const api = useApi();
   const { showToast } = useToast();
   const [memMessage, setMemMessage] = useState();
@@ -48,22 +48,24 @@ export default function Home() {
 
   const fetchProjects = async () => {
     const response = await api.get("projects/");
+    console.log(response.data);
     return response.data;
   };
 
   const { data: projects, isLoading: isProjectsLoading } = useQuery({
-    queryKey: ["projects"],
+    queryKey: ["projects", language],
     queryFn: fetchProjects,
     enabled: true,
   });
 
   const fetchSkills = async () => {
     const response = await api.get("skills/");
+    console.log(response.data);
     return response.data;
   };
 
   const { data: skills, isLoading: isSkillsLoading } = useQuery({
-    queryKey: ["skills"],
+    queryKey: ["skills", language],
     queryFn: fetchSkills,
     enabled: true,
   });
