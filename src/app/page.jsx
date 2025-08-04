@@ -13,6 +13,7 @@ import { useToast } from "@/components/ToastProvider";
 import ImageWithLoader from "@/components/imageLoader";
 import confetti from "canvas-confetti";
 import PingPongGame from "@/components/PingPongGame";
+import Cookies from "js-cookie";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Pagination, Autoplay } from 'swiper/modules';
@@ -65,8 +66,8 @@ export default function Home() {
     enabled: true,
   });
 
-  const [name, setName] = useState("");
-  const [telegramUser, setTelegramUser] = useState("");
+  const [name, setName] = useState(Cookies.get('userName') || "");
+  const [telegramUser, setTelegramUser] = useState(Cookies.get('telegramUser') || "");
   const [message, setMessage] = useState("");
 
   const disabledButton =
@@ -138,9 +139,11 @@ export default function Home() {
           successMessages[Math.floor(Math.random() * successMessages.length)];
         showToast(randomSuccess, "success");
       }
+      Cookies.set('userName', name);
+      Cookies.set('telegramUser', telegramUser);
 
-      setName("");
-      setTelegramUser("");
+      setName(Cookies.get('userName') || "");
+      setTelegramUser(Cookies.get('telegramUser') || "");
       setMessage("");
     } catch (error) {
       console.error("Error: ", error);
@@ -364,32 +367,15 @@ export default function Home() {
                 ) : null}
                 </Swiper>
               </motion.div>
-              <motion.div
-                variants={itemVariants}
-                id="contacts"
-                className={styles.contactsSection}
-              >
+              <motion.div variants={itemVariants} id="contacts" className={styles.contactsSection}>
                 <h1>Write me</h1>
                 <div className={styles.boxInputsRow}>
                   <div className={styles.boxOneInput}>
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      value={name}
-                      onChange={handleNameChange}
-                      maxLength={50}
-                    />
+                    <input type="text" placeholder="Name" value={name} onChange={handleNameChange} maxLength={50}/>
                   </div>
                   <div className={styles.boxOneInput}>
-                    <input
-                      type="text"
-                      placeholder="Telegram username"
-                      value={telegramUser}
-                      onChange={handleTelegramChange}
-                      onFocus={handleTelegramFocus}
-                      onBlur={handleTelegramBlur}
-                      maxLength={50}
-                    />
+                    <input type="text" placeholder="Telegram username" value={telegramUser} onChange={handleTelegramChange} 
+                    onFocus={handleTelegramFocus} onBlur={handleTelegramBlur} maxLength={50}/>
                   </div>
                 </div>
                 <div className={styles.boxOneInput}>
