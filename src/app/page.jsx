@@ -286,7 +286,7 @@ export default function Home() {
                     </div>
                   </>
                 ) : projects?.length > 0 ? (
-                  projects.map((item) => (
+                  projects.slice(0, 4).map((item) => (
                     <SwiperSlide key={item.id} className={styles.swiperSlide}>
                       <Link href={item.link} className={styles.oneProject} target="_blank">
                         <div className={styles.boxProjectImageAndName}>
