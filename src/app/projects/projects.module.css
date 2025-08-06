@@ -115,7 +115,7 @@
         scrollbar-width: none;
     }
 
-    .firstTable, .secondTable{
+    .firstTable, .secondTable, .table hr{
         min-width: 860px;
     }
 }
