@@ -2,9 +2,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 100vh;
   width: 100%;
-  max-width: 1160px;
+  max-width: 1000px;
   padding: 50px 0px;
   margin: 0 auto;
   gap: 20px;
@@ -46,11 +45,11 @@
 }
 
 .firstCol {
-  width: 200px;
+  width: 150px;
 }
 
 .secondCol {
-  width: 200px;
+  width: 150px;
 }
 
 .thirdCol {
@@ -58,7 +57,7 @@
 }
 
 .fouthCol {
-  width: 250px;
+  width: 190px;
 }
 
 .secondTable {
