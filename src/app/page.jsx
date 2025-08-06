@@ -307,6 +307,11 @@ export default function Home() {
                     </SwiperSlide>
                   ))
                 ) : null}
+                <SwiperSlide className={styles.swiperSlide}>
+                  <Link href={'/projects'} className={styles.oneProject1}>
+                    <p>More Projects</p>
+                  </Link>
+                </SwiperSlide>
                 </Swiper>
               </motion.div>
               <motion.div variants={itemVariants} id="contacts" className={styles.contactsSection}>

@@ -142,7 +142,7 @@
   text-align: center;
 }
 
-.oneProject {
+.oneProject, .oneProject1 {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -154,6 +154,18 @@
   justify-content: space-between;
 }
 
+.oneProject1{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.oneProject1 p{
+  margin-top: 1px;
+}
+
 .boxProjectImageAndName {
   display: flex;
   flex-direction: row;
@@ -162,7 +174,7 @@
 }
 
 .oneProject h6,
-.oneProject p {
+.oneProject p, .oneProject1 p {
   color: #fff;
 }
 
@@ -304,13 +316,13 @@
 
 @media (hover: hover) {
   .skillsGrid:hover .boxOneSkills,
-  .projectsSection:hover .oneProject {
+  .projectsSection:hover .oneProject, .oneProject1 {
     opacity: 0.7;
     transition: 0.2s;
   }
 
   .skillsGrid:hover .boxOneSkills:hover,
-  .projectsSection:hover .oneProject:hover {
+  .projectsSection:hover .oneProject:hover, .oneProject1:hover {
     background-color: rgba(45, 212, 191, 0.1);
     box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1),
       0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);
@@ -319,7 +331,7 @@
   }
 
   .skillsGrid:hover .boxOneSkills:hover p,
-  .projectsSection:hover .oneProject:hover p {
+  .projectsSection:hover .oneProject:hover p, .oneProject1:hover p {
     color: rgb(94 234 212);
     transition: 0.2s ease;
     opacity: 1;
@@ -328,7 +340,7 @@
 
 @media (hover: none) {
   .boxOneSkills:active,
-  .oneProject:active {
+  .oneProject:active, .oneProject1:active {
     background-color: rgba(45, 212, 191, 0.1);
     box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1),
       0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);
@@ -337,7 +349,7 @@
   }
 
   .boxOneSkills p:active,
-  .oneProject p:active {
+  .oneProject p:active, .oneProject1 p:active {
     color: rgb(94 234 212);
     transition: 0.2s ease;
     opacity: 1;
@@ -361,7 +373,7 @@
     font-size: 12px;
   }
 
-  .oneProject {
+  .oneProject, .oneProject1 {
     flex-direction: column;
   }
 
