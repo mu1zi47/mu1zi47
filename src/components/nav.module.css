@@ -44,14 +44,6 @@
   margin-top: 1px;
 }
 
-.navCenterButtons button:hover,
-.languageButton:hover,
-.burgerMenu:hover {
-  color: #5eead4;
-  transition: 0.2s;
-  background-color: rgba(45, 212, 191, 0.1);
-}
-
 .LanguageSwitcher {
   height: 50px;
   width: 50px;
@@ -100,18 +92,8 @@
   transition: 0.2s;
 }
 
-.LanguageModal button:hover {
-  background-color: rgba(45, 212, 191, 0.1);
-  transition: 0.2s;
-}
-
 .LanguageModal button p {
   margin-top: 1px;
-}
-
-.LanguageModal button:hover p {
-  color: #5eead4;
-  transition: 0.2s;
 }
 
 .burgerMenu {
@@ -122,15 +104,6 @@
   display: none;
   align-items: center;
   transition: 0.2s;
-}
-
-.burgerMenu:hover .hover,
-.hovered {
-  display: none;
-}
-
-.burgerMenu:hover .hovered {
-  display: flex;
 }
 
 .adaptiveModalBox {
@@ -147,13 +120,6 @@
   align-items: start;
   padding: 10px;
   transition: 0.2s;
-}
-
-.adaptiveModalBox button:hover {
-  background-color: rgba(45, 212, 191, 0.1);
-  border-radius: 10px;
-  transition: 0.2s;
-  color: #5eead4;
 }
 
 .rowLanguages {
@@ -181,6 +147,78 @@
 .rowLanguages .oneLanguageActive {
   background-color: rgba(45, 212, 191, 0.1);
   border-radius: 10px;
+}
+
+@media (hover: hover) {
+  .navCenterButtons button:hover,
+  .languageButton:hover,
+  .burgerMenu:hover {
+    color: #5eead4;
+    transition: 0.2s;
+    background-color: rgba(45, 212, 191, 0.1);
+  }
+
+  .adaptiveModalBox button:hover {
+    background-color: rgba(45, 212, 191, 0.1);
+    border-radius: 10px;
+    transition: 0.2s;
+    color: #5eead4;
+  }
+
+  .burgerMenu:hover .hover,
+  .hovered {
+    display: none;
+  }
+
+  .burgerMenu:hover .hovered {
+    display: flex;
+  }
+
+  .LanguageModal button:hover {
+    background-color: rgba(45, 212, 191, 0.1);
+    transition: 0.2s;
+  }
+
+  .LanguageModal button:hover p {
+    color: #5eead4;
+    transition: 0.2s;
+  }
+}
+
+@media (hover: none) {
+  .navCenterButtons button:active,
+  .languageButton:active,
+  .burgerMenu:active {
+    color: #5eead4;
+    transition: 0.2s;
+    background-color: rgba(45, 212, 191, 0.1);
+  }
+
+  .adaptiveModalBox button:active {
+    background-color: rgba(45, 212, 191, 0.1);
+    border-radius: 10px;
+    transition: 0.2s;
+    color: #5eead4;
+  }
+
+  .burgerMenu:active .hover,
+  .hovered {
+    display: none;
+  }
+
+  .burgerMenu:active .hovered {
+    display: flex;
+  }
+
+  .LanguageModal button:active {
+    background-color: rgba(45, 212, 191, 0.1);
+    transition: 0.2s;
+  }
+
+  .LanguageModal button:active p {
+    color: #5eead4;
+    transition: 0.2s;
+  }
 }
 
 @media screen and (max-width: 1050px) {
