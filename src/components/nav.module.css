@@ -10,7 +10,6 @@
   top: 0px;
   z-index: 100;
   backdrop-filter: blur(10px);
-  overflow: hidden;
 }
 
 .nav {
@@ -74,6 +73,7 @@
   backdrop-filter: blur(10px);
   padding: 10px;
   gap: 2px;
+
 }
 
 .LanguageModal button {
@@ -236,5 +236,9 @@
 
   .burgerMenu {
     display: flex;
+  }
+
+  .navContainer{
+    overflow: hidden;
   }
 }

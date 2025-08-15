@@ -53,7 +53,6 @@ const LanguageSwitcher = () => {
 
             <motion.div ref={modalRef} initial={{ y: 60 }}
                 animate={languageModal ? { y: 100, opacity: 1, display: "flex" } : { y: 60, opacity: 0, display: "none" }}
-                style={{ display: languageModal ? "flex" : "none" }}
                 transition={{ transition: "ease" }}
                 className={styles.LanguageModal}>
                 <button onClick={() => changeLanguage("en")}><Image src='/en.svg' alt="en" width={21} height={15}/> <p>English</p></button>
