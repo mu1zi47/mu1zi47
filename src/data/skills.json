@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "HTML",
+    "level": "Advanced"
+  },
+  {
+    "id": 2,
+    "name": "CSS",
+    "level": "Advanced"
+  },
+  {
+    "id": 3,
+    "name": "JavaScript",
+    "level": "Intermediate"
+  },
+  {
+    "id": 4,
+    "name": "Git",
+    "level": "Basic"
+  },
+  {
+    "id": 5,
+    "name": "React",
+    "level": "Intermediate"
+  },
+  {
+    "id": 6,
+    "name": "Next.js",
+    "level": "Intermediate"
+  },
+  {
+    "id": 7,
+    "name": "Angular",
+    "level": "Basic"
+  }
+]

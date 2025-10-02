@@ -8,7 +8,6 @@ export default function ImageWithLoader({ src, alt, width, height }) {
 
   return (
     <div className={styles.img} style={{ position: "relative", width, height }}>
-      {/* Пока грузится → показываем скелетон */}
       {!loaded && (
         <Skeleton width={width} height={height} baseColor="#1e293b80" highlightColor="#2dd4bf1a"/>)}
       <Image
