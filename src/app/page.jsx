@@ -100,28 +100,39 @@ export default function Home() {
   ];
 
   const handleSendMessage = async () => {
+    const lastSent = Cookies.get("sentMessage");
+    if (lastSent) {
+      showToast(
+        "You have already sent a message. Please try again later (in 24 hours).",
+        "error"
+      );
+      setMessage("");
+      return;
+    }
     try {
-      await api.post("message/create/", {
-        name,
-        telegramUser,
-        message,
+      await fetch("/api/send-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, telegramUser, message }),
       });
+      Cookies.set("sentMessage", "true", { expires: 1 });
       let toastMessage = "";
 
       if (name.trim().toLowerCase() === "rick") {
-        toastMessage = `🎵 ("Sending a special track for Rick...")}`;
+        toastMessage = `🎵 Sending a special track for Rick...`;
         showToast(toastMessage, "success");
         setTimeout(() => {
           window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         }, 1000);
       } else if (name.trim().toLowerCase() === "admin") {
-        toastMessage = `👀 ("Oh, admin! Don’t forget to check the logs.")}`;
+        toastMessage = `👀 (Oh, admin! Don’t forget to check the logs.`;
         showToast(toastMessage, "success");
       } else {
         const randomSuccess =
           successMessages[Math.floor(Math.random() * successMessages.length)];
         showToast(randomSuccess, "success");
       }
+
       Cookies.set("userName", name);
       Cookies.set("telegramUser", telegramUser);
 
@@ -130,10 +141,10 @@ export default function Home() {
       setMessage("");
     } catch (error) {
       console.error("Error: ", error);
-
       const randomError =
         errorMessages[Math.floor(Math.random() * errorMessages.length)];
       showToast(randomError, "error");
+      setMessage("");
     }
   };
 
@@ -153,7 +164,7 @@ export default function Home() {
           setKanomi(true);
           currentIndex = 0;
           showToast(
-            `("Secret mode activated… but nothing changed. Or did it?")} 👀`,
+            `Secret mode activated… but nothing changed. Or did it? 👀`,
             "success"
           );
           confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
@@ -214,11 +225,9 @@ export default function Home() {
                   <br />
                   So far, most of my work has been on personal projects,
                   including
-                  <Link href={"https://comica.tcats.uz"}>
-                    {" "}
-                    Comica TCats
-                  </Link>, where I focused on creating a seamless and visually
-                  engaging experience.
+                  <Link href={"https://comica.tcats.uz"}> Comica TCats</Link>,
+                  where I focused on creating a seamless and visually engaging
+                  experience.
                   <br />
                   <br />
                   I’m always exploring new technologies and improving my craft
@@ -245,7 +254,11 @@ export default function Home() {
                     {skills?.length > 0
                       ? skills.map((item) => (
                           <SwiperSlide className={styles.swiperSlide2}>
-                            <div key={item.id} href={"#"} className={styles.boxOneSkills}>
+                            <div
+                              key={item.id}
+                              href={"#"}
+                              className={styles.boxOneSkills}
+                            >
                               <p>{item.name}</p>
                               <h6>{item.level}</h6>
                             </div>
@@ -272,10 +285,22 @@ export default function Home() {
                 >
                   {projects?.length > 0
                     ? projects.map((item) => (
-                        <SwiperSlide key={item.id} className={styles.swiperSlide}>
-                          <Link href={item.link} className={styles.oneProject} target="_blank">
+                        <SwiperSlide
+                          key={item.id}
+                          className={styles.swiperSlide}
+                        >
+                          <Link
+                            href={item.link}
+                            className={styles.oneProject}
+                            target="_blank"
+                          >
                             <div className={styles.boxProjectImageAndName}>
-                              <ImageWithLoader src={item.image} alt={item.name} width={125} height={78} />
+                              <ImageWithLoader
+                                src={item.image}
+                                alt={item.name}
+                                width={125}
+                                height={78}
+                              />
                               <div className={styles.boxTextOneProject}>
                                 <p>{item.name}</p>
                                 <h6>{item.description}</h6>
@@ -283,7 +308,10 @@ export default function Home() {
                             </div>
                             <div className={styles.projectTexnologys}>
                               {item.technologies.map((tech, index) => (
-                                <div key={index} className={styles.oneTexnology}>
+                                <div
+                                  key={index}
+                                  className={styles.oneTexnology}
+                                >
                                   <h5>{tech}</h5>
                                 </div>
                               ))}
@@ -300,7 +328,9 @@ export default function Home() {
                 className={styles.contactsSection}
               >
                 <h1>Write me</h1>
+
                 <div className={styles.boxInputsRow}>
+                  {/* Имя */}
                   <div className={styles.boxOneInput}>
                     <input
                       type="text"
@@ -310,6 +340,8 @@ export default function Home() {
                       maxLength={50}
                     />
                   </div>
+
+                  {/* Telegram username */}
                   <div className={styles.boxOneInput}>
                     <input
                       type="text"
@@ -322,15 +354,18 @@ export default function Home() {
                     />
                   </div>
                 </div>
+
+                {/* Сообщение */}
                 <div className={styles.boxOneInput}>
                   <textarea
-                    type="text"
                     placeholder="Message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     maxLength={500}
                   />
                 </div>
+
+                {/* Кнопка */}
                 <button
                   onClick={handleSendMessage}
                   disabled={disabledButton}
