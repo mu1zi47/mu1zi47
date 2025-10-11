@@ -13,7 +13,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Mazzard, sans-serif;
+  font-family: Rothek, sans-serif;
   height: 100%;
   min-height: 100vh;
 }
@@ -33,9 +33,9 @@ body ::selection, body ::-moz-selection{
 
 
 @font-face {
-  font-family: 'Mazzard';
-  src: url('/fonts/MazzardH-Regular.otf') format('opentype');
-  font-weight: 500;
+  font-family: 'Rothek';
+  src: url('/fonts/Rothek SemiBold.otf') format('opentype');
+  font-weight: 600;
 }
 
 .mySwiper{

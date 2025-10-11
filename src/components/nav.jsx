@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./nav.module.css";
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -10,9 +11,9 @@ export default function Nav() {
 
   return (
     <>
-      <motion.nav initial={{height:60}} animate={modal ? {height:244} : {height:60}} exit={{height:60}} transition={{duration:0.2}} className={styles.navContainer}>
+      <motion.nav initial={{height:50}} animate={modal ? {height:240} : {height:50}} exit={{height:50}} transition={{duration:0.2}} className={styles.navContainer}>
         <div className={styles.nav}>
-          <h1>mu1zi47</h1>
+          <Link href={'/'}><h1>mu1zi47</h1></Link>
           <div className={styles.navCenterButtons}>
             <button onClick={() => document.getElementById("about")?.scrollIntoView()}>
               <p>About</p>
