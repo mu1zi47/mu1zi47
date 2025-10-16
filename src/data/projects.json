@@ -14,5 +14,13 @@
     "image": "/projects/mu1zi47.vercel.png",
     "description": "mu1zi47.vercel.app is the personal portfolio of a frontend developer from Tashkent, showcasing the author’s unique style, approach, and professionalism. The project features real case studies, a clean and modern design, responsive interface, and high performance. It serves as an entry point for potential clients and collaborators, as well as a platform to demonstrate technical stack, code quality, and visual taste.",
     "technologies": ["Next.js", "CSS", "Swiper.js", "Motion", "Axios"]
+  },
+  {
+    "id": 3,
+    "name": "mu1zi47-qrcodes.vercel.app",
+    "link": "https://mu1zi47-qrcodes.vercel.app",
+    "image": "/projects/mu1zi47-qrcodes.vercel.app.png",
+    "description": "mu1zi47-qrcodes.vercel.app is a simple and powerful QR code generator that allows users to create customized QR codes with logos, colors, and text. Built with modern web technologies, it focuses on clean design, speed, and user-friendly experience for both personal and business use.",
+    "technologies": ["Next.js", "CSS", "Motion"]
   }
 ]
